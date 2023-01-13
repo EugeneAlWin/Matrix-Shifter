@@ -8,6 +8,11 @@ const RangeX = document.getElementById('X'),
 let Matrix = [];
 
 //listeners
+addEventListener('DOMContentLoaded', () => {
+  Matrix = generateMatrix(RangeX.value, RangeY.value);
+  Container.replaceChildren(...Matrix);
+});
+
 [RangeX, RangeY].forEach((e) =>
   e.addEventListener('input', () => {
     Matrix = generateMatrix(RangeX.value, RangeY.value);
@@ -20,9 +25,6 @@ SwapButton.addEventListener('click', async () => {
     await swapCubes(Matrix).then(() => counter++);
   }
 });
-
-Matrix = generateMatrix(RangeX.value, RangeY.value);
-Container.replaceChildren(...Matrix);
 
 //generate matrix
 function generateMatrix(SizeX, SizeY) {
