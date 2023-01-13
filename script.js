@@ -14,8 +14,19 @@ let Matrix = [];
     Container.replaceChildren(...Matrix);
   })
 );
-SwapButton.addEventListener('click', () => {
-  swapCubes(RangeIterrations.value, Matrix, RangeX.value, RangeY.value);
+SwapButton.addEventListener('click', async () => {
+  let counter = 0;
+  while (counter < 3) {
+    await swapCubes(
+      RangeIterrations.value,
+      Matrix,
+      RangeX.value,
+      RangeY.value
+    ).then(() => {
+      counter++;
+      console.log(counter);
+    });
+  }
 });
 
 Matrix = generateMatrix(RangeX.value, RangeY.value);
@@ -38,33 +49,29 @@ function generateMatrix(SizeX, SizeY) {
   }
   return matrix;
 }
-function swapCubes(numberOfIterrations, matrix, SizeX, SizeY) {
-  for (let d = 0; d < numberOfIterrations; d++) {
-    let q = setTimeout(() => {
-      for (let i = 0; i < 1; i++) {
-        let c = setTimeout(() => {
-          for (let j = 0; j < SizeX; j++) {
-            let b = setTimeout(() => {
-              const constElemNum = getRandomInt(SizeX);
-              [matrix[i][j], matrix[i][constElemNum]] = [
-                matrix[i][constElemNum],
-                matrix[i][j],
-              ];
-              for (let z = 0; z < SizeX; z++) {
-                let a = setTimeout(() => {
-                  matrix[i][z].style = `transform:translateX(${z * 70}px)`;
-                  clearTimeout(a);
-                }, z * 10);
-              }
-              clearTimeout(b);
-            }, j * 500);
-          }
-          clearTimeout(c);
-        }, i * 300);
-      }
-      clearTimeout(q);
-    }, d * 4000);
-  }
+
+function swapCubes(matrix, SizeX, SizeY) {
+  return new Promise((resolve) => {
+    for (let i = 0; i < SizeY; i++) {
+      let q = setTimeout(() => {
+        for (let j = 0; j < SizeX; j++) {
+          let b = setTimeout(() => {
+            const constElemNum = getRandomInt(SizeX);
+            [matrix[i][j], matrix[i][constElemNum]] = [
+              matrix[i][constElemNum],
+              matrix[i][j],
+            ];
+            for (let z = 0; z < SizeX; z++) {
+              matrix[i][z].style = `transform:translateX(${z * 70}px)`;
+            }
+            clearTimeout(b);
+            clearTimeout(q);
+            if (j === SizeX - 1 && i === SizeY - 1) resolve(true);
+          }, j * 500);
+        }
+      }, i * 100);
+    }
+  });
 }
 
 /**
