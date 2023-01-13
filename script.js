@@ -16,7 +16,7 @@ let Matrix = [];
 );
 SwapButton.addEventListener('click', async () => {
   let counter = 0;
-  while (counter < 3) {
+  while (counter < RangeIterrations.value) {
     await swapCubes(Matrix).then(() => counter++);
   }
 });
