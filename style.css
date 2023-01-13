@@ -1,0 +1,70 @@
+#container {
+  display: flex;
+  flex: 2;
+  flex-wrap: wrap;
+  height: inherit;
+}
+#cube_lt {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+}
+#cube_rt {
+  width: calc(100% - 50px);
+  height: 50px;
+  background-color: rgb(109, 109, 90);
+  display: flex;
+}
+#cube_lb {
+  width: 50px;
+  height: 100%;
+  background-color: gold;
+}
+#cube_rb {
+  width: calc(100% - 50px);
+  background-color: teal;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.num_cube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  flex-direction: row;
+}
+.cube_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  height: 50px;
+}
+
+.cube {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cube.green {
+  background-color: green !important;
+}
+
+body {
+  background-color: rgb(17, 16, 16);
+  color: white;
+  height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
