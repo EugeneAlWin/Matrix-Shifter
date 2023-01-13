@@ -17,21 +17,12 @@ let Matrix = [];
 SwapButton.addEventListener('click', async () => {
   let counter = 0;
   while (counter < 3) {
-    await swapCubes(
-      RangeIterrations.value,
-      Matrix,
-      RangeX.value,
-      RangeY.value
-    ).then(() => {
-      counter++;
-      console.log(counter);
-    });
+    await swapCubes(Matrix).then(() => counter++);
   }
 });
 
 Matrix = generateMatrix(RangeX.value, RangeY.value);
 Container.replaceChildren(...Matrix);
-// swapCubes(2, 3, Matrix, RangeX.value, RangeY.value);
 
 //generate matrix
 function generateMatrix(SizeX, SizeY) {
@@ -50,7 +41,9 @@ function generateMatrix(SizeX, SizeY) {
   return matrix;
 }
 
-function swapCubes(matrix, SizeX, SizeY) {
+function swapCubes(matrix) {
+  const SizeY = matrix.length,
+    SizeX = matrix[0].children.length;
   return new Promise((resolve) => {
     for (let i = 0; i < SizeY; i++) {
       let q = setTimeout(() => {
