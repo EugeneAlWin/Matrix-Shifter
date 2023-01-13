@@ -9,22 +9,27 @@ let Matrix = [];
 
 //listeners
 addEventListener('DOMContentLoaded', () => {
-  Matrix = generateMatrix(RangeX.value, RangeY.value);
-  Container.replaceChildren(...Matrix);
+  drawMatrix(Matrix);
 });
 
 [RangeX, RangeY].forEach((e) =>
   e.addEventListener('input', () => {
-    Matrix = generateMatrix(RangeX.value, RangeY.value);
-    Container.replaceChildren(...Matrix);
+    drawMatrix(Matrix);
   })
 );
+
 SwapButton.addEventListener('click', async () => {
   let counter = 0;
   while (counter < RangeIterrations.value) {
     await swapCubes(Matrix).then(() => counter++);
   }
 });
+
+//functions
+function drawMatrix(matrix) {
+  Matrix = generateMatrix(RangeX.value, RangeY.value);
+  Container.replaceChildren(...Matrix);
+}
 
 //generate matrix
 function generateMatrix(SizeX, SizeY) {
