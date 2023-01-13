@@ -14,7 +14,7 @@
   height: 50px;
   background-color: rgb(109, 109, 90);
   display: flex;
-  gap: 15px;
+  gap: 8px;
 }
 #cube_lb {
   display: flex;
@@ -22,12 +22,12 @@
   width: 50px;
   height: 100%;
   background-color: gold;
-  gap: 15px; /* binded with #cube_rb */
+  gap: 8px; /* binded with #cube_rb */
 }
 #cube_rb {
   width: calc(100% - 50px);
   background-color: teal;
-  gap: 15px; /* binded with #cube_lb */
+  gap: 8px; /* binded with #cube_lb */
   display: flex;
   flex-direction: column;
 }
