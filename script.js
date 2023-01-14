@@ -27,12 +27,13 @@ addEventListener('DOMContentLoaded', () => {
 
 [RangeX, RangeY].forEach((e) =>
   e.addEventListener('input', () => {
+    IsStopImmediately = IsNowSwapping; // stop swapping only if it is in progress
     Matrix = drawMatrix();
   })
 );
 
 ResetButton.addEventListener('click', () => {
-  IsStopImmediately = true;
+  IsStopImmediately = IsNowSwapping;
   Matrix = drawMatrix();
 });
 
