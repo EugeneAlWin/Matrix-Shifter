@@ -100,9 +100,9 @@ function swapCubes(matrix) {
 
   return new Promise((resolve) => {
     for (let i = 0; i < SizeY; i++) {
-      let q = setTimeout(() => {
+      let timeout1 = setTimeout(() => {
         for (let j = 0; j < SizeX; j++) {
-          let b = setTimeout(() => {
+          let timeout2 = setTimeout(() => {
             const numOfElementToSwapWith = getRandomInt(SizeX);
 
             [matrix[i][j], matrix[i][numOfElementToSwapWith]] = [
@@ -116,8 +116,9 @@ function swapCubes(matrix) {
               }px)`;
             }
 
-            clearTimeout(b);
-            clearTimeout(q);
+            clearTimeout(timeout2);
+            clearTimeout(timeout1);
+
             if ((j === SizeX - 1 && i === SizeY - 1) || IsStopImmediately)
               resolve(true);
           }, j * 500);
