@@ -7,7 +7,8 @@ const RangeX = document.getElementById('X'),
   SwapButton = document.getElementById('swapbtn'),
   ResetButton = document.getElementById('resetbtn'),
   RandomNumFromMRange = document.getElementById('M_from_range'),
-  Container = document.getElementById('cube_rb');
+  Container = document.getElementById('cube_rb'),
+  ItterationsCounter = document.getElementById('itterations_counter');
 
 const CubeWidthWithGap =
   NumContainerX.children[1].getBoundingClientRect().left -
@@ -44,8 +45,10 @@ SwapButton.addEventListener('click', async () => {
       IsStopImmediately = false;
       break;
     }
+    ItterationsCounter.textContent = counter + 1;
     await swapCubes(Matrix).then(() => counter++);
   }
+  ItterationsCounter.textContent = '*';
   IsNowSwapping = false;
 });
 

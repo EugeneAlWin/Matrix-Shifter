@@ -114,3 +114,14 @@ label {
   text-align: center;
   margin-bottom: 5%;
 }
+.buttons_container {
+  margin-bottom: 10px;
+}
+#itterations_counter {
+  color: orangered;
+  font-weight: bold;
+}
+mark {
+  background: transparent;
+  color: orangered;
+}
