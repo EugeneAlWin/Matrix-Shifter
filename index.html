@@ -9,57 +9,60 @@
     <title>Document</title>
   </head>
   <body>
-    <input
-      placeholder="X"
-      type="range"
-      id="X"
-      name="volumeX"
-      min="4"
-      max="25"
-      step="1"
-      value="4"
-    />
-    <label for="volumeX">M (4 - 25)</label
-    ><input
-      placeholder="X"
-      type="range"
-      id="Y"
-      name="volumeY"
-      min="10"
-      max="18"
-      step="1"
-      value="10"
-    />
-    <label for="volumeY">N (10 - 18)</label>
-    <input
-      placeholder="X"
-      type="range"
-      id="Iterrations"
-      name="Iterrations"
-      min="5"
-      max="10"
-      step="1"
-      value="5"
-    />
-    <label for="Iterrations">Iterrations (5 - 10)</label>
-
-    <input type="button" id="swapbtn" value="Swap!" />
-    <input type="button" id="resetbtn" value="Reset" />
+    <div class="controllers">
+      <input
+        placeholder="X"
+        type="range"
+        id="X"
+        name="volumeX"
+        min="4"
+        max="25"
+        step="1"
+        value="4"
+      />
+      <label for="volumeX">Range M (4 - 25)</label
+      ><input
+        placeholder="Y"
+        type="range"
+        id="Y"
+        name="volumeY"
+        min="10"
+        max="25"
+        step="1"
+        value="10"
+      />
+      <label for="volumeY">Range N (10 - 25)</label>
+      <input
+        placeholder="Itterations"
+        type="range"
+        id="Iterrations"
+        name="Iterrations"
+        min="5"
+        max="10"
+        step="1"
+        value="5"
+      />
+      <label for="Iterrations">Iterrations (5 - 10)</label>
+      <div class="buttons_container">
+        <input type="button" id="swapbtn" value="Swap" />
+        <input type="button" id="resetbtn" value="Reset" />
+      </div>
+    </div>
     <div id="container">
-      <div id="cube_lt"></div>
-      <div id="cube_rt">
-        <div class="num_cube">1</div>
-        <div class="num_cube">2</div>
-        <div class="num_cube">3</div>
-        <div class="num_cube">4</div>
+      <div class="top">
+        <div id="cube_lt"><div class="num_cube"></div></div>
+        <div id="cube_rt">
+          <div class="num_cube">1</div>
+          <div class="num_cube">2</div>
+        </div>
       </div>
-      <div id="cube_lb">
-        <div class="num_cube">1</div>
-        <div class="num_cube">2</div>
-        <div class="num_cube">3</div>
-        <div class="num_cube">4</div>
+      <div class="bottom">
+        <div id="cube_lb">
+          <div class="num_cube">1</div>
+          <div class="num_cube">2</div>
+        </div>
+        <div id="cube_rb"></div>
       </div>
-      <div id="cube_rb"></div>
     </div>
   </body>
 </html>

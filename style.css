@@ -1,31 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background-color: rgb(17, 16, 16);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+.controllers {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+
+.buttons_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+/*  */
 #container {
   display: flex;
-  flex: 2;
-  flex-wrap: wrap;
-  height: inherit;
+  flex-direction: column;
+  width: 83%;
+}
+
+.top,
+.bottom {
+  display: flex;
 }
 #cube_lt {
   width: 50px;
   height: 50px;
-  background-color: red;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 #cube_rt {
-  width: calc(100% - 50px);
   height: 50px;
-  background-color: rgb(109, 109, 90);
+  background-color: rgb(17, 16, 16);
   display: flex;
   gap: 8px;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 #cube_lb {
   display: flex;
   flex-direction: column;
   width: 50px;
-  height: 100%;
-  background-color: gold;
+  background-color: rgb(17, 16, 16);
   gap: 8px; /* binded with #cube_rb */
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 #cube_rb {
-  width: calc(100% - 50px);
   background-color: teal;
   gap: 8px; /* binded with #cube_lb */
   display: flex;
@@ -55,19 +89,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 .cube.green {
   background-color: green !important;
 }
 
-body {
-  background-color: rgb(17, 16, 16);
-  color: white;
-  height: 100vh;
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+input[type='range'] {
+  margin-top: 5%;
+}
+
+input[type='button'] {
+  background-color: rgb(214, 223, 212);
+  border-radius: 10px;
+  padding: 2%;
+}
+label {
+  text-align: center;
+  margin-bottom: 5%;
 }
