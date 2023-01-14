@@ -105,9 +105,9 @@ function swapCubes(matrix) {
       let q = setTimeout(() => {
         for (let j = 0; j < SizeX; j++) {
           let b = setTimeout(() => {
-            const constElemNum = getRandomInt(SizeX);
-            [matrix[i][j], matrix[i][constElemNum]] = [
-              matrix[i][constElemNum],
+            const numOfElementToSwapWith = getRandomInt(SizeX);
+            [matrix[i][j], matrix[i][numOfElementToSwapWith]] = [
+              matrix[i][numOfElementToSwapWith],
               matrix[i][j],
             ];
             for (let z = 0; z < SizeX; z++) {
