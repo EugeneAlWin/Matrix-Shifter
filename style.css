@@ -105,13 +105,27 @@ body {
 
 input[type='range'] {
   margin-top: 5%;
+  cursor: pointer;
 }
 
 input[type='button'] {
   background-color: rgb(214, 223, 212);
   border-radius: 10px;
   padding: 2%;
+  color: white;
+  font-weight: 400;
 }
+input[type='button']:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+input[type='button']:first-child {
+  background-color: green;
+}
+input[type='button']:last-child {
+  background-color: red;
+}
+
 label {
   text-align: center;
   margin-bottom: 5%;
