@@ -65,33 +65,29 @@ function drawMatrix() {
 
 function drawRowsNums(matrix) {
   let sizeX = matrix[0].children.length,
-    sizeY = matrix.length;
-  let numRangeX = [],
+    sizeY = matrix.length,
+    numRangeX = [],
     numRangeY = [];
-  for (let i = 0; i < sizeY; i++) {
-    numRangeY[i] = document.createElement(`div`);
-    numRangeY[i].textContent = i + 1;
-    numRangeY[i].classList.add(`num_cube`);
-  }
-  for (let i = 0; i < sizeX; i++) {
-    numRangeX[i] = document.createElement(`div`);
-    numRangeX[i].textContent = i + 1;
-    numRangeX[i].classList.add(`num_cube`);
-  }
+
+  for (let i = 0; i < sizeY; i++)
+    numRangeY[i] = createHTMLElement(`div`, i + 1, ['num_cube']);
+  for (let i = 0; i < sizeX; i++)
+    numRangeX[i] = createHTMLElement(`div`, i + 1, ['num_cube']);
+
   return [numRangeX, numRangeY];
 }
 
 //generate matrix
 function generateMatrix(SizeX, SizeY) {
   const matrix = [];
+
   for (let i = 0; i < SizeY; i++) {
-    matrix[i] = document.createElement(`div`);
-    matrix[i].classList.add(`cube_container`);
+    matrix[i] = createHTMLElement('div', '', ['cube_container']);
+
     for (let j = 0; j < SizeX; j++) {
-      matrix[i][j] = document.createElement(`div`);
-      matrix[i][j].textContent = j;
-      matrix[i][j].style = `transform:translateX(${j * CubeWidthWithGap}px);`;
-      matrix[i][j].classList.add(`cube`, j < SizeX / 2 && 'green');
+      let classNames = ['cube', j < SizeX / 2 && 'green'],
+        style = `transform:translateX(${j * CubeWidthWithGap}px);`;
+      matrix[i][j] = createHTMLElement('div', j, classNames, style);
       matrix[i].appendChild(matrix[i][j]);
     }
   }
@@ -101,21 +97,25 @@ function generateMatrix(SizeX, SizeY) {
 function swapCubes(matrix) {
   const SizeY = matrix.length,
     SizeX = matrix[0].children.length;
+
   return new Promise((resolve) => {
     for (let i = 0; i < SizeY; i++) {
       let q = setTimeout(() => {
         for (let j = 0; j < SizeX; j++) {
           let b = setTimeout(() => {
             const numOfElementToSwapWith = getRandomInt(SizeX);
+
             [matrix[i][j], matrix[i][numOfElementToSwapWith]] = [
               matrix[i][numOfElementToSwapWith],
               matrix[i][j],
             ];
+
             for (let z = 0; z < SizeX; z++) {
-              matrix[i][z].style = `
-              transform:translateX(${z * CubeWidthWithGap}px)
-              `;
+              matrix[i][z].style = `transform:translateX(${
+                z * CubeWidthWithGap
+              }px)`;
             }
+
             clearTimeout(b);
             clearTimeout(q);
             if ((j === SizeX - 1 && i === SizeY - 1) || IsStopImmediately)
@@ -133,4 +133,20 @@ function swapCubes(matrix) {
  */
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
+}
+
+/**
+ * @returns {HTMLElement} Returns a new HTML element
+ */
+function createHTMLElement(
+  tag = 'div',
+  text = '',
+  classNames = [''],
+  style = ''
+) {
+  const element = document.createElement(tag);
+  element.textContent = text;
+  element.classList.add(...classNames);
+  element.style = style;
+  return element;
 }
