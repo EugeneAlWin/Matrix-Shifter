@@ -16,12 +16,12 @@ let Matrix = [];
 
 //listeners
 addEventListener('DOMContentLoaded', () => {
-  drawMatrix();
+  Matrix = drawMatrix();
 });
 
 [RangeX, RangeY].forEach((e) =>
   e.addEventListener('input', () => {
-    drawMatrix();
+    Matrix = drawMatrix();
   })
 );
 
@@ -34,11 +34,12 @@ SwapButton.addEventListener('click', async () => {
 
 //functions
 function drawMatrix() {
-  Matrix = generateMatrix(RangeX.value, RangeY.value);
-  let [numRangeX, numRangeY] = drawRowsNums(Matrix);
+  let matrix = generateMatrix(RangeX.value, RangeY.value);
+  let [numRangeX, numRangeY] = drawRowsNums(matrix);
   NumContainerX.replaceChildren(...numRangeX);
   NumContainerY.replaceChildren(...numRangeY);
-  Container.replaceChildren(...Matrix);
+  Container.replaceChildren(...matrix);
+  return matrix;
 }
 
 function drawRowsNums(matrix) {
