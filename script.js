@@ -10,6 +10,9 @@ const RangeX = document.getElementById('X'),
   Container = document.getElementById('cube_rb'),
   IterationCounter = document.getElementById('iteration_counter');
 
+const TimeoutBetweenRows = 100,
+  TimeoutBetweenCubes = 500;
+
 const CubeWidthWithGap =
   NumContainerX.children[1].getBoundingClientRect().left -
   NumContainerX.children[0].getBoundingClientRect().left;
@@ -121,9 +124,9 @@ function swapCubes(matrix) {
 
             if ((j === SizeX - 1 && i === SizeY - 1) || IsStopImmediately)
               resolve(true);
-          }, j * 500);
+          }, j * TimeoutBetweenCubes);
         }
-      }, i * 100);
+      }, i * TimeoutBetweenRows);
     }
   });
 }
