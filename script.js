@@ -46,8 +46,8 @@ SwapButton.addEventListener('click', async () => {
       IsStopImmediately = false;
       break;
     }
-    IterationCounter.textContent = counter + 1;
-    await swapCubes(Matrix).then(() => counter++);
+    IterationCounter.textContent = ++counter; // increment counter and display it
+    await swapCubes(Matrix);
   }
   IterationCounter.textContent = '*';
   IsNowSwapping = false;
