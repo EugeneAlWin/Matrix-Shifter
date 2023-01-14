@@ -9,13 +9,14 @@ body {
   background-color: rgb(17, 16, 16);
   color: white;
   display: flex;
-  justify-content: space-around;
 }
 
 .controllers {
   display: flex;
   flex-direction: column;
   width: 15%;
+  margin: 0 1%;
+  min-width: 200px;
 }
 
 .buttons_container {
