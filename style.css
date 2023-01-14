@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 body {
   background-color: rgb(17, 16, 16);
@@ -93,7 +94,7 @@ body {
 }
 
 .cube.green {
-  background-color: green !important;
+  background-color: green;
 }
 
 ::-webkit-scrollbar {
@@ -124,4 +125,8 @@ label {
 mark {
   background: transparent;
   color: orangered;
+}
+
+p {
+  text-align: center;
 }
