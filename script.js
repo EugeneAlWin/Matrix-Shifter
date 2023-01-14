@@ -5,6 +5,7 @@ const RangeX = document.getElementById('X'),
   NumContainerY = document.getElementById('cube_lb'),
   RangeIterrations = document.getElementById('Iterrations'),
   SwapButton = document.getElementById('swapbtn'),
+  ResetButton = document.getElementById('resetbtn'),
   RandomNumFromMRange = document.getElementById('M_from_range'),
   Container = document.getElementById('cube_rb');
 
@@ -13,6 +14,10 @@ const CubeWidthWithGap =
   NumContainerX.children[0].getBoundingClientRect().left;
 
 let Matrix = [];
+
+//States
+let IsNowSwapping = false,
+  IsStopImmediately = false;
 
 //listeners
 addEventListener('DOMContentLoaded', () => {
@@ -25,11 +30,23 @@ addEventListener('DOMContentLoaded', () => {
   })
 );
 
+ResetButton.addEventListener('click', () => {
+  IsStopImmediately = true;
+  Matrix = drawMatrix();
+});
+
 SwapButton.addEventListener('click', async () => {
+  if (IsNowSwapping) return;
+  IsNowSwapping = true;
   let counter = 0;
   while (counter < RangeIterrations.value) {
+    if (IsStopImmediately) {
+      IsStopImmediately = false;
+      break;
+    }
     await swapCubes(Matrix).then(() => counter++);
   }
+  IsNowSwapping = false;
 });
 
 //functions
@@ -97,7 +114,8 @@ function swapCubes(matrix) {
             }
             clearTimeout(b);
             clearTimeout(q);
-            if (j === SizeX - 1 && i === SizeY - 1) resolve(true);
+            if ((j === SizeX - 1 && i === SizeY - 1) || IsStopImmediately)
+              resolve(true);
           }, j * 500);
         }
       }, i * 100);
