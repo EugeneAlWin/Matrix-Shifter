@@ -145,3 +145,9 @@ mark {
 p {
   text-align: center;
 }
+ol {
+  list-style-type: lower-alpha;
+}
+li {
+  margin-bottom: 5px;
+}
