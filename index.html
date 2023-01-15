@@ -6,11 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+    <script src="languages.js" defer></script>
     <script src="script.js" defer></script>
     <title>Matrix Shifter</title>
   </head>
   <body>
     <div class="controllers">
+      <div id="lang_container">
+        <p>Language:</p>
+        <select name="lang" title="lang" id="lang_switcher">
+          <option value="EN" selected>EN</option>
+          <option value="RU">RU</option>
+          <option value="PL">PL</option>
+        </select>
+      </div>
       <input
         placeholder="X"
         type="range"
@@ -21,7 +30,7 @@
         step="1"
         value="4"
       />
-      <label for="volumeX">Range M (4 - 25)</label
+      <label for="volumeX" class="lang-RANGE_M">Range M (4 - 25)</label
       ><input
         placeholder="Y"
         type="range"
@@ -32,7 +41,7 @@
         step="1"
         value="10"
       />
-      <label for="volumeY">Range N (10 - 25)</label>
+      <label for="volumeY" class="lang-RANGE_N a">Range N (10 - 25)</label>
       <input
         placeholder="Itterations"
         type="range"
@@ -43,35 +52,37 @@
         step="1"
         value="5"
       />
-      <label for="Iterations">Iterations (5 - 10)</label>
+      <label for="Iterations" class="lang-ITERATIONS"
+        >Iterations (5 - 10)</label
+      >
       <div class="buttons_container">
-        <button id="swapbtn">SHIFT</button>
-        <button id="resetbtn">RESET</button>
-        <!-- <input type="button" />
-        <input type="button" id="resetbtn" value="RESET" /> -->
+        <button id="swapbtn" class="lang-SHIFT_BUTTON">SHIFT</button>
+        <button id="resetbtn" class="lang-RESET_BUTTON">RESET</button>
       </div>
-      <p><mark>*</mark> - iteration counter</p>
+      <p class="lang-ITERATION_COUNTER"><mark>*</mark> - iteration counter</p>
       <br />
-      <p>Task:</p>
+      <p class="lang-TASK">Task:</p>
       <ol>
-        <li>
+        <li class="lang-POINT_1">
           <mark>The</mark> initial positioning of the tokens is such that the
           first two columns have green tokens and the remaining columns have red
           tokens;
         </li>
-        <li><mark>For</mark> each token, a number between 1 and 4 is drawn;</li>
-        <li>
+        <li class="lang-POINT_2">
+          <mark>For</mark> each token, a number between 1 and 4 is drawn;
+        </li>
+        <li class="lang-POINT_3">
           <mark>One</mark> by one, each token is swapped places with a token
           located in the same row, in the column with the number drawn in point
           b.
         </li>
-        <li>
+        <li class="lang-POINT_4">
           <mark>After</mark> all the tokens have been swapped, operations b-c
           are repeated four more times.
         </li>
       </ol>
       <br />
-      <p style="text-align: left">
+      <p style="text-align: left" class="lang-MODIFIED">
         <mark>Modified</mark>: the board can be of size MxN (limited to 25 each,
         because why many?) and the number of iterations can be from 5 to 10
         (limited for the same reason).

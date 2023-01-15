@@ -10,7 +10,24 @@ body {
   color: white;
   display: flex;
 }
-
+#lang_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  margin-top: 1%;
+}
+select {
+  background-color: black;
+  border-radius: 10px;
+  padding: 2%;
+  color: white;
+  font-weight: 400;
+}
+option {
+  background-color: black;
+  color: white;
+}
 .controllers {
   display: flex;
   flex-direction: column;

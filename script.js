@@ -8,7 +8,9 @@ const RangeX = document.getElementById('X'),
   ResetButton = document.getElementById('resetbtn'),
   RandomNumFromMRange = document.getElementById('M_from_range'),
   Container = document.getElementById('cube_rb'),
-  IterationCounter = document.getElementById('iteration_counter');
+  IterationCounter = document.getElementById('iteration_counter'),
+  LangSwitcher = document.getElementById('lang_switcher'),
+  AllLangContainers = [...document.querySelectorAll(`[class*=lang-]`)];
 
 const TimeoutBetweenRows = 100,
   TimeoutBetweenCubes = 500;
@@ -25,6 +27,9 @@ let IsNowSwapping = false,
 
 //listeners
 addEventListener('DOMContentLoaded', () => {
+  let lang = localStorage.getItem('localization') ?? 'EN';
+  LangSwitcher.value = lang;
+  switchLang(lang);
   Matrix = drawMatrix();
 });
 
@@ -54,6 +59,11 @@ SwapButton.addEventListener('click', async () => {
   }
   IterationCounter.textContent = '*';
   IsNowSwapping = false;
+});
+
+LangSwitcher.addEventListener('change', () => {
+  switchLang(LangSwitcher.value);
+  localStorage.setItem('localization', LangSwitcher.value);
 });
 
 //functions
@@ -128,6 +138,17 @@ function swapCubes(matrix) {
         }
       }, i * TimeoutBetweenRows);
     }
+  });
+}
+
+function switchLang(lang) {
+  const localization = LANGUAGES[lang] ?? LANGUAGES['EN'];
+  AllLangContainers.forEach((item) => {
+    let className = item.className
+      .split(' ')
+      .filter((e) => e.includes('lang-'))[0]
+      .replace('lang-', '');
+    item.innerHTML = localization[className];
   });
 }
 
